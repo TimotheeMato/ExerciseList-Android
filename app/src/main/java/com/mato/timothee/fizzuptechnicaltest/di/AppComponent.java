@@ -3,6 +3,7 @@ package com.mato.timothee.fizzuptechnicaltest.di;
 import android.app.Application;
 
 import com.mato.timothee.fizzuptechnicaltest.FizzUpApplication;
+import com.mato.timothee.fizzuptechnicaltest.network.NetworkModule;
 
 import javax.inject.Singleton;
 
@@ -19,6 +20,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Singleton
 @Component(modules = {
         AppModule.class,
+        NetworkModule.class,
         AndroidSupportInjectionModule.class
 })
 public interface AppComponent extends AndroidInjector<DaggerApplication> {

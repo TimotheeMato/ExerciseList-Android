@@ -12,6 +12,8 @@ android {
     }
     buildTypes {
         release {
+            buildConfigField "String", "BASE_URL",
+                    "\"https://s3-us-west-1.amazonaws.com/fizzup/files/public/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -39,6 +41,8 @@ dependencies {
 
     // Retrofit 2
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 
     // Butterknife
     compile 'com.jakewharton:butterknife:8.8.1'
