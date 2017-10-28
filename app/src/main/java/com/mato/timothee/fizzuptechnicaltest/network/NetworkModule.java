@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -22,17 +23,17 @@ public abstract class NetworkModule {
     }
 
     @Singleton
-    @Binds
+    @Provides
     Retrofit provideRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl("https://example.com/")
+                .baseUrl(this.baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 
     @Singleton
-    @Binds
+    @Provides
     DataService provideDataService(Retrofit retrofit) {
         return retrofit.create(DataService.class);
     }
