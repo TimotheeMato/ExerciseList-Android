@@ -62,6 +62,7 @@ public class ListFragment extends DaggerFragment implements ListContract.View {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         showLoading(true);
+        presenter.takeView(this);
         presenter.fetchData();
     }
 

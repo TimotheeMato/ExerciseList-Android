@@ -3,7 +3,7 @@ package com.mato.timothee.fizzuptechnicaltest;
 
 import com.mato.timothee.fizzuptechnicaltest.di.AppComponent;
 import com.mato.timothee.fizzuptechnicaltest.di.DaggerAppComponent;
-import com.mato.timothee.fizzuptechnicaltest.network.NetworkModule;
+import com.mato.timothee.fizzuptechnicaltest.network.DataModule;
 
 
 import dagger.android.AndroidInjector;
@@ -19,7 +19,7 @@ public class FizzUpApplication extends DaggerApplication {
     protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
         AppComponent appComponent = DaggerAppComponent.builder()
                 .application(this)
-                .networkModule(new NetworkModule(BuildConfig.BASE_URL))
+                .dataModule(new DataModule(BuildConfig.BASE_URL))
                 .build();
         appComponent.inject(this);
         return appComponent;

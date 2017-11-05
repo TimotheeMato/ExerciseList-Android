@@ -1,5 +1,9 @@
 package com.mato.timothee.fizzuptechnicaltest.network;
 
+import android.content.Context;
+
+import com.mato.timothee.fizzuptechnicaltest.db.ExerciseDataSource;
+
 import javax.inject.Singleton;
 
 import dagger.Binds;
@@ -15,11 +19,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 @Module
-public class NetworkModule {
+public class DataModule {
 
     private String baseUrl;
 
-    public NetworkModule(String baseUrl) {
+    public DataModule(String baseUrl) {
         this.baseUrl = baseUrl;
     }
 
@@ -42,5 +46,11 @@ public class NetworkModule {
     @Provides
     DataService provideDataService(Retrofit retrofit) {
         return retrofit.create(DataService.class);
+    }
+
+    @Singleton
+    @Provides
+    ExerciseDataSource provideExerciseDataSource(Context context) {
+        return new ExerciseDataSource(context);
     }
 }
