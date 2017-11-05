@@ -3,8 +3,7 @@ package com.mato.timothee.fizzuptechnicaltest.network;
 import com.mato.timothee.fizzuptechnicaltest.models.Exercise;
 
 import java.util.List;
-
-import io.reactivex.Single;
+import retrofit2.Call;
 import retrofit2.http.GET;
 
 /**
@@ -13,6 +12,6 @@ import retrofit2.http.GET;
 
 public interface DataService {
 
-    @GET("/sample.json")
-    Single<DataResponse<List<Exercise>>> getExercises();
+    @GET("/fizzup/files/public/sample.json")
+    Call<DataResponse<List<Exercise>>> getExercises();
 }

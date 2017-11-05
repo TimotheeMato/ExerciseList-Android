@@ -1,11 +1,10 @@
 package com.mato.timothee.fizzuptechnicaltest;
 
-import android.content.Context;
 
 import com.mato.timothee.fizzuptechnicaltest.di.AppComponent;
 import com.mato.timothee.fizzuptechnicaltest.di.DaggerAppComponent;
+import com.mato.timothee.fizzuptechnicaltest.network.NetworkModule;
 
-import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
@@ -18,7 +17,10 @@ public class FizzUpApplication extends DaggerApplication {
 
     @Override
     protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-        AppComponent appComponent = DaggerAppComponent.builder().application(this).build();
+        AppComponent appComponent = DaggerAppComponent.builder()
+                .application(this)
+                .networkModule(new NetworkModule(BuildConfig.BASE_URL))
+                .build();
         appComponent.inject(this);
         return appComponent;
     }

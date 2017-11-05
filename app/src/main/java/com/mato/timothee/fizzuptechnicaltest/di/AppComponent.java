@@ -37,6 +37,8 @@ public interface AppComponent extends AndroidInjector<DaggerApplication> {
         @BindsInstance
         AppComponent.Builder application(Application application);
 
+        AppComponent.Builder networkModule(NetworkModule networkModule);
+
         AppComponent build();
     }
 }
